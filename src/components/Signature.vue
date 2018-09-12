@@ -17,31 +17,63 @@
       </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-3">
       <div class="form-group">
         <label for="">RPI Email</label>
         <input type="text" class='form-control' v-model="fields.email">
       </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-3">
       <div class="form-group">
         <label for="">RIN</label>
         <input type="text" class='form-control' v-model="fields.rin">
       </div>
     </div>
 
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label for="">Major</label>
+        <input type="text" class='form-control' v-model="fields.major">
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label for="">Class Year</label>
+        <select class="form-control" v-model="fields.class_year">
+          <option value="FRESHMAN">Freshman</option>
+          <option value="SOPHMORE">Sophmore</option>
+          <option value="JUNIOR">Junior</option>
+          <option value="SENIOR">Senior</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <hr>
+    </div>
+
     <div class="col-lg-4">
       <div class="form-group">
         <label for="">Course</label>
-        <input type="text" class='form-control' v-model="fields.course">
+        <select class="form-control" v-model="fields.course">
+          <option value="CSCI 2941">CSCI 2941</option>
+          <option value="CSCI 4941">CSCI 4941</option>
+        </select>
       </div>
     </div>
 
     <div class="col-lg-4">
       <div class="form-group">
         <label for="">Credits</label>
-        <input type="text" class='form-control' v-model="fields.credits">
+        <select class="form-control" v-model="fields.credits">
+          <option value="0">0 Credits (Experience)</option>
+          <option value="1">1 Credit</option>
+          <option value="2">2 Credits</option>
+          <option value="3">3 Credits</option>
+          <option value="4">4 Credits</option>
+        </select>
       </div>
     </div>
 
@@ -52,11 +84,11 @@
       </div>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-lg-12 text-center">
       <p class='lead'>Signature</p>
       <div class='col-lg-12 d-flex justify-content-center'>
         <br>
-        <canvas id='sig-canvas' width='900' height='300'></canvas>
+        <canvas id='sig-canvas' width='450' height='150'></canvas>
       </div>
     </div>
 
@@ -82,58 +114,12 @@ export default {
   name: 'Signature',
   mounted () {
     const canvas = document.getElementById('sig-canvas')
-    // const context = canvas.getContext('2d')
-    // const imageObj = new Image()
-
-    // imageObj.onload = function () {
-    //   context.drawImage(imageObj, 0, 0)
-    // }
-
-    // imageObj.src = 'https://image.ibb.co/cKwi4p/Screenshot_2018_09_11_21_21_25.png'
-    // context.font = '15pt Calibri'
-    // setTimeout(() => {
-    //   this.fields.forEach((field) => {
-    //     context.fillText(field.text, field.x, field.y)
-    //   })
-    // }, 100)
-
     const signaturePad = new SignaturePad(canvas)
     this.signaturePad = signaturePad
-
-    // Returns signature image as data URL (see https://mdn.io/todataurl for the list of possible parameters)
-    // signaturePad.toDataURL() // save image as PNG
-    // signaturePad.toDataURL("image/jpeg") // save image as JPEG
-    // signaturePad.toDataURL("image/svg+xml") // save image as SVG
-
-    // Draws signature image from data URL.
-    // NOTE: This method does not populate internal data structure that represents drawn signature. Thus, after using #fromDataURL, #toData won't work properly.
-    // signaturePad.fromDataURL("data:image/pngbase64,iVBORw0K...")
-
-    // Returns signature image as an array of point groups
-    // const data = signaturePad.toData()
-
-    // Draws signature image from an array of point groups
-    // signaturePad.fromData(data)
-
-    // Clears the canvas
-    // signaturePad.clear()
-
-    // Returns true if canvas is empty, otherwise returns false
-    // signaturePad.isEmpty()
-
-    // Unbinds all event handlers
-    // signaturePad.off()
-
-    // Rebinds all event handlers
-    // signaturePad.on()
   },
   methods: {
     onSubmit () {
-      // console.log(this.signaturePad.toData())
-      // console.log(this.signaturePad.toDataURL())
-      this.fields.signature = this.signaturePad.toDataURL()
-      // window.fields = this.fields
-      const { first, last, email, rin, project, course, credits, date } = this.fields
+      const { first, last, email, rin, project, course, credits, date, major, class_year } = this.fields
       window.fields = {
         name: first + ' ' + last,
         signature: this.signaturePad.toDataURL(),
@@ -142,7 +128,9 @@ export default {
         project,
         course,
         credits,
-        date
+        date,
+        major,
+        class_year
       }
       window.location = '#/form'
     }
@@ -159,9 +147,11 @@ export default {
         email: 'johndoe@rpi.edu',
         rin: '661000001',
         project: 'YACS',
-        course: 'CSCI 2941 or CSCI 4941',
-        credits: 4,
+        course: 'CSCI 4941',
+        credits: '4',
         signature: '',
+        major: 'CSCI',
+        class_year: 'SOPHMORE',
         date: `${month} / ${day} / ${year}`
       }
     }
