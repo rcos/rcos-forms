@@ -154,12 +154,12 @@ export default {
     const year = event.getFullYear()
     return {
       fields: {
-        first: 'Alexander',
-        last: 'Schwartzberg',
-        email: 'schwaa6@rpi.edu',
-        rin: '661000234',
-        project: 'Observatory',
-        course: 'CSCI XXXX',
+        first: 'John',
+        last: 'Doe',
+        email: 'johndoe@rpi.edu',
+        rin: '661000001',
+        project: 'YACS',
+        course: 'CSCI 2941 or CSCI 4941',
         credits: 4,
         signature: '',
         date: `${month} / ${day} / ${year}`

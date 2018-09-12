@@ -71,20 +71,28 @@ export default {
           }
           sigImg.src = window.fields.signature
         }
-      }
-
-      // imageObj.src = '/form.png'
-      imageObj.src = 'https://blog.rcos.io/rcos-forms/static/form.png'
-      context.font = '15pt Calibri'
-      setTimeout(() => {
         Object.keys(window.fields).forEach((key) => {
           if (key === 'signature') return
           const value = window.fields[key]
           const field = mapping[key]
           // console.log(key)
+          context.font = '15pt Calibri'
           context.fillText(value, field.x, field.y)
         })
-      }, 100)
+      }
+
+      // imageObj.src = '/form.png'
+      imageObj.src = 'https://blog.rcos.io/rcos-forms/static/form.png'
+      // context.font = '15pt Calibri'
+      // setTimeout(() => {
+      //   Object.keys(window.fields).forEach((key) => {
+      //     if (key === 'signature') return
+      //     const value = window.fields[key]
+      //     const field = mapping[key]
+      //     // console.log(key)
+      //     context.fillText(value, field.x, field.y)
+      //   })
+      // }, 100)
     }
   }
 }
