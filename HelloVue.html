@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vue.js Workshop</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- FontAwesome CSS + Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <!-- Underscore.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <!-- VueJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js"></script>
+
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar bg-dark text-light">
+      <a class="navbar-brand" href="#">Vue.js Workshop</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="https://rcos.io">rcos</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Application Container -->
+    <div class="container mt-4" id="app">
+      <hello/>
+    </div>
+
+    <script>
+
+      // Instantiates new `Hello` component
+      Vue.component('hello', {
+        template: `
+          <div class="row" id='app'>
+            <div class="col-lg-12">
+              <div class='card card-body'>
+
+                <p class='lead'>Welcome to Vue.js workshop!</p>
+
+              </div>
+            </div>
+          </div>
+        `
+      })
+
+      // Instantiates Vue Application
+      new Vue({ el: "#app" });
+
+    </script>
+
+  </body>
+</html>
