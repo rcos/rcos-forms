@@ -81,8 +81,8 @@ export default {
         })
       }
 
-      // imageObj.src = '/form.png'
-      imageObj.src = 'https://blog.rcos.io/rcos-forms/static/form.png'
+      imageObj.src = 'static/form.png'
+      // imageObj.src = 'https://blog.rcos.io/rcos-forms/static/form.png'
       // context.font = '15pt Calibri'
       // setTimeout(() => {
       //   Object.keys(window.fields).forEach((key) => {
