@@ -1,15 +1,25 @@
 <template>
   <div class='row'>
+    <div class='col-lg-12 text-center'>
+      <h2>Your URP form is ready</h2>
+      <p class="lead">Download your form and send it to <a target="_blank" href="https://github.com/aeksco">@aeksco</a> on Slack</p>
 
-    <!-- V-FOR -->
-    <div class='col-lg-3'>
-      <button class="btn btn-lg btn-primary" name="button" v-if="downloadUrl" @click="downloadImage()">
-        DOWNLOAD
+      <button class="btn btn-lg btn-primary mr-4" v-if="downloadUrl" @click="downloadImage()">
+        <i class="fa fa-download"></i>
+        Download
       </button>
+
+      <button class="btn btn-lg btn-outline-primary" @click="downloadImage()">
+        <i class="fa fa-refresh"></i>
+        Reset
+      </button>
+
+      <hr>
     </div>
 
-    <div class='col-lg-9'>
-      <canvas id='canvas' width='1760' height='1300'></canvas>
+    <!-- V-FOR -->
+    <div class='col-lg-12'>
+      <canvas id='canvas' width='2086' height='1612'></canvas>
     </div>
 
   </div>
@@ -21,25 +31,24 @@
 import download from 'downloadjs'
 
 const mapping = {
-  // first: { x: 235, y: 165 },
-  name: { x: 235, y: 165 },
-  email: { x: 160, y: 210 },
-  rin: { x: 160, y: 247 },
-  project: { x: 1360, y: 357 },
-  course: { x: 320, y: 555 },
-  credits: { x: 320, y: 598 },
-  date: { x: 430, y: 1130 },
-  major: { x: 260, y: 320 },
+  name: { x: 265, y: 194 },
+  email: { x: 180, y: 244 },
+  rin: { x: 180, y: 290 },
+  project: { x: 1580, y: 422 },
+  course: { x: 280, y: 662 },
+  credits: { x: 380, y: 715 },
+  date: { x: 500, y: 1350 },
+  major: { x: 300, y: 384 },
   classYear: {
-    FRESHMAN: { x: 220, y: 366 },
-    SOPHMORE: { x: 330, y: 366 },
-    JUNIOR: { x: 440, y: 366 },
-    SENIOR: { x: 530, y: 366 }
+    FRESHMAN: { x: 220, y: 426 },
+    SOPHMORE: { x: 390, y: 426 },
+    JUNIOR: { x: 440, y: 426 },
+    SENIOR: { x: 530, y: 426 }
   },
   semester: {
-    FALL: { x: 270, y: 415 },
-    SPRING: { x: 420, y: 415 },
-    SUMMER: { x: 570, y: 415 }
+    FALL: { x: 310, y: 490 },
+    SPRING: { x: 420, y: 490 },
+    SUMMER: { x: 570, y: 490 }
   }
 }
 
@@ -80,7 +89,7 @@ export default {
           sigImg.onload = function () {
             const scalar = 0.3
             // ctx.drawImage(image, dx, dy, dWidth, dHeight);
-            context.drawImage(sigImg, 100, 1080, scalar * 900, scalar * 300)
+            context.drawImage(sigImg, 100, 1280, scalar * 900, scalar * 300)
           }
           sigImg.src = fields.signature
         }
@@ -104,7 +113,7 @@ export default {
         }
 
         // Places semester checkbox
-        context.font = '25pt Calibri'
+        context.font = '20pt Calibri'
         context.fillText(year, semesterField.x, semesterField.y)
 
         // Other fields
@@ -114,7 +123,7 @@ export default {
           const value = fields[key]
           const field = mapping[key]
           // console.log(key)
-          context.font = '15pt Calibri'
+          context.font = '20pt Calibri'
           context.fillText(value, field.x, field.y)
         })
       }
