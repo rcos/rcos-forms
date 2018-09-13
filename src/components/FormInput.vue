@@ -10,6 +10,8 @@
     <input :name="name" v-if="type === 'BOOL'" type="checkbox" ref="input_el" class="form-control" :checked="value" @change="updateModel()">
     <input :name="name" v-else-if="type === 'DATE'" type="date" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
     <input :name="name" v-else-if="type === 'TIME'" type="time" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
+    <input :name="name" v-else-if="type === 'EMAIL'" type="email" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
+    <input :name="name" v-else-if="type === 'NUMBER'" type="number" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
     <input :name="name" v-else type="text" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
 
   </div>

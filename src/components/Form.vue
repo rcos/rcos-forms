@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-lg-4">
-      <FormInput name='first' label="First Name" placeholder="First Name" v-model="fields.first" required="true" help="Your first name" />
+      <FormInput label="First Name" placeholder="First Name" v-model="fields.first" required="true" help="Your first name" />
     </div>
 
     <div class="col-lg-4">
@@ -20,12 +20,12 @@
     </div>
 
     <div class="col-lg-4">
-      <FormInput type="email" label="RPI Email" placeholder="RPI Email" v-model="fields.email" required="true" help="Your RPI Email" />
+      <FormInput name="email" type="EMAIL" label="RPI Email" placeholder="RPI Email" v-model="fields.email" required="true" help="Your RPI Email" />
 
     </div>
 
     <div class="col-lg-4">
-      <FormInput label="RPI RIN" placeholder="RIN" v-model="fields.rin" type="number" required="true" help="Your Rensselaer ID Number - '661000000'" />
+      <FormInput label="RPI RIN" placeholder="RIN" v-model="fields.rin" type="NUMBER" required="true" help="Your Rensselaer ID Number - '661000000'" />
     </div>
 
     <div class="col-lg-4">
@@ -94,14 +94,18 @@
         <br>
         <canvas id='sig-canvas' width='450' height='150'></canvas>
       </div>
+      <button class="btn btn-sm btn-warning mt-3" @click="clearSignature()">
+        <i class="fa fa-eraser"></i>
+        Clear Signature
+      </button>
     </div>
 
     <div class="col-lg-12">
       <hr>
       <div class="row d-flex justify-content-center mb-4">
         <div class="col-lg-6">
-          <button type="button" name="button" class="btn btn-success btn-lg btn-block" @click="onSubmit()">
-            <i class="fa fa-cog"></i>
+          <button type="button" name="button" class="btn btn-success btn-lg btn-block py-3 px-3" style='font-size: 2rem;' @click="onSubmit()">
+            <i class="fa fa-gears"></i>
             Generate URP Form
           </button>
         </div>
@@ -127,6 +131,9 @@ export default {
     this.signaturePad = signaturePad
   },
   methods: {
+    clearSignature () {
+      this.signaturePad.clear()
+    },
     onSubmit () {
       const { first, last, email, rin, project, course, credits, date, major, classYear } = this.fields
       window.fields = {
@@ -151,11 +158,11 @@ export default {
     const year = event.getFullYear()
     return {
       fields: {
-        first: 'Alexander',
-        last: 'Schwartzberg',
-        email: 'schwaa6@rpi.edu',
-        rin: '661022009',
-        project: 'Codotype',
+        first: '',
+        last: '',
+        email: '',
+        rin: '',
+        project: '',
         course: 'CSCI 2941',
         credits: '4',
         signature: '',

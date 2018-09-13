@@ -9,7 +9,7 @@
         Download
       </button>
 
-      <button class="btn btn-lg btn-outline-primary" @click="downloadImage()">
+      <button class="btn btn-lg btn-outline-primary" @click="reset()">
         <i class="fa fa-refresh"></i>
         Reset
       </button>
@@ -40,10 +40,10 @@ const mapping = {
   date: { x: 500, y: 1350 },
   major: { x: 300, y: 384 },
   classYear: {
-    FRESHMAN: { x: 220, y: 426 },
-    SOPHMORE: { x: 390, y: 426 },
-    JUNIOR: { x: 440, y: 426 },
-    SENIOR: { x: 530, y: 426 }
+    FRESHMAN: { x: 260, y: 430 },
+    SOPHMORE: { x: 390, y: 430 },
+    JUNIOR: { x: 510, y: 430 },
+    SENIOR: { x: 630, y: 430 }
   },
   semester: {
     FALL: { x: 310, y: 490 },
@@ -72,8 +72,14 @@ export default {
     downloadImage () {
       const canvas = document.getElementById('canvas')
       canvas.toBlob((blob) => {
-        download(blob, 'rcos_urp_form.png', 'image/png')
+        let rcsId = window.fields.email.split('@')[0]
+        let filename = rcsId + '_rcos_urp.png'
+        download(blob, filename, 'image/png')
       })
+    },
+    reset () {
+      window.location = '#/form'
+      delete window.fields
     },
     renderForm () {
       const canvas = document.getElementById('canvas')

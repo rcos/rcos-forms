@@ -10,7 +10,7 @@
 
       <a class="navbar-brand text-dark" href="https://github.com/rcos/rcos-forms" target="_blank">
         <i class="fa fa-lg fa-github mr-1"></i>
-        GitHub Source
+        GitHub
       </a>
     </nav>
 
