@@ -30,7 +30,7 @@ const mapping = {
   credits: { x: 320, y: 598 },
   date: { x: 430, y: 1130 },
   major: { x: 260, y: 320 },
-  class_year: {
+  classYear: {
     FRESHMAN: { x: 220, y: 366 },
     SOPHMORE: { x: 330, y: 366 },
     JUNIOR: { x: 440, y: 366 },
@@ -86,7 +86,7 @@ export default {
         }
 
         // Adds class year checkbox
-        const checkboxField = mapping['class_year'][window.fields['class_year']]
+        const checkboxField = mapping['classYear'][window.fields['classYear']]
         context.font = '25pt Calibri'
         context.fillText('X', checkboxField.x, checkboxField.y)
 
@@ -110,7 +110,7 @@ export default {
         // Other fields
         Object.keys(fields).forEach((key) => {
           if (key === 'signature') return
-          if (key === 'class_year') return
+          if (key === 'classYear') return
           const value = fields[key]
           const field = mapping[key]
           // console.log(key)

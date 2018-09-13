@@ -41,7 +41,7 @@
     <div class="col-lg-3">
       <div class="form-group">
         <label for="">Class Year</label>
-        <select class="form-control" v-model="fields.class_year">
+        <select class="form-control" v-model="fields.classYear">
           <option value="FRESHMAN">Freshman</option>
           <option value="SOPHMORE">Sophmore</option>
           <option value="JUNIOR">Junior</option>
@@ -109,9 +109,13 @@
 
 <script>
 import SignaturePad from 'signature_pad'
+import FormInput from './FormInput'
 
 export default {
   name: 'Signature',
+  computed: {
+    FormInput
+  },
   mounted () {
     const canvas = document.getElementById('sig-canvas')
     const signaturePad = new SignaturePad(canvas)
@@ -119,7 +123,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      const { first, last, email, rin, project, course, credits, date, major, class_year } = this.fields
+      const { first, last, email, rin, project, course, credits, date, major, classYear } = this.fields
       window.fields = {
         name: first + ' ' + last,
         signature: this.signaturePad.toDataURL(),
@@ -130,7 +134,7 @@ export default {
         credits,
         date,
         major,
-        class_year
+        classYear
       }
       window.location = '#/form'
     }
@@ -151,7 +155,7 @@ export default {
         credits: '4',
         signature: '',
         major: 'CSCI',
-        class_year: 'SOPHMORE',
+        classYear: 'SOPHMORE',
         date: `${month} / ${day} / ${year}`
       }
     }
